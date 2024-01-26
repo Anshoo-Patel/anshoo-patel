@@ -1,13 +1,15 @@
 (function ($) {
   $(document).ready(function () {
     // Function to show/hide content based on hash
+    // Update this function
     function showContent() {
-      var region = location.hash.toString() || '#home';
-      $('.content-region').hide();
-      $(region).show();
-      $('.main-menu a').removeClass('active');
-      $('.main-menu a[href="' + region + '"]').addClass('active');
+    var region = location.hash || '#home';
+    $('.content-region').hide();
+    $(region).show();
+    $('.main-menu a').removeClass('active');
+    $('.main-menu a[href="' + region + '"]').addClass('active');
     }
+
 
     // Show content on page load and hashchange
     $(window).on('load hashchange', function () {
