@@ -137,5 +137,65 @@ ul.main-menu li a.active {
   display:block;
 }
 
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 1.2em;
+  }
+
+  header, #content, footer {
+    padding: 15px;
+  }
+
+  ul.main-menu li a {
+    font-size: 1.8rem;
+    margin-right: 15px;
+  }
+}
+
+/* Increase Boundary Box Size */
+#container {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* About and Contact Page Styles */
+#about, #contact {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Navigation Links for Routing */
+#content a {
+  cursor: pointer;
+}
+
+/* Routing Script */
+(function ($) {
+  $(document).ready(function () {
+    // Function to show/hide content based on hash
+    function showContent() {
+      var region = location.hash.toString() || '#home';
+      $('.content-region').hide();
+      $(region).show();
+      $('.main-menu a').removeClass('active');
+      $('.main-menu a[href="' + region + '"]').addClass('active');
+    }
+
+    // Show content on page load and hashchange
+    $(window).on('load hashchange', function () {
+      showContent();
+    });
+
+    // Click event for navigation links
+    $('#content a').on('click', function (e) {
+      e.preventDefault();
+      var target = $(this).attr('href');
+      location.hash = target;
+      showContent();
+    });
+  });
+})(jQuery);
+
 
 
