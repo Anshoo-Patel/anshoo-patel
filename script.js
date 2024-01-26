@@ -14,6 +14,11 @@ $(document).ready(function () {
 
     // Show the targeted section
     $('.content-region').hide();
-    $(target).show();
+    $(target).removeClass('hide').show(); // Ensure the 'hide' class is removed
+
+    // Additional code to handle scroll to the top if needed
+    if (target === '#home') {
+      $('html, body').animate({ scrollTop: 0 }, 'fast');
+    }
   });
 });
