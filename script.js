@@ -6,19 +6,16 @@ $(document).ready(function () {
   // Click event for navigation links
   $('.main-menu a').on('click', function (e) {
     e.preventDefault();
+    
+    // Get the target section from the href attribute
     var target = $(this).attr('href');
 
     // Remove and add 'active' class for navigation links
     $('.main-menu a').removeClass('active');
     $(this).addClass('active');
 
-    // Show the targeted section
+    // Show the targeted section and hide others
     $('.content-region').hide();
-    $(target).removeClass('hide').show(); // Ensure the 'hide' class is removed
-
-    // Additional code to handle scroll to the top if needed
-    if (target === '#home') {
-      $('html, body').animate({ scrollTop: 0 }, 'fast');
-    }
+    $(target).show();
   });
 });
