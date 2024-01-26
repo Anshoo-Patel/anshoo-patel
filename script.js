@@ -18,12 +18,13 @@ $(document).ready(function () {
   $('.main-menu a').on('click', function (e) {
     e.preventDefault();
     var target = $(this).attr('href');
+
+    // Handle special case for the Home link
+    if (target === '#home') {
+      target = 'index.html';
+    }
+
     location.hash = target;
     showContent();
-
-    // If the target is #home, navigate to index.html
-    if (target === '#home') {
-      location.href = 'index.html';
-    }
   });
 });
