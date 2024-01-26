@@ -1,22 +1,21 @@
 // Wait for the document to load before running the script 
-(function ($) {
-  
-  // We use some Javascript and the URL #fragment to hide/show different parts of the page
-  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#Linking_to_an_element_on_the_same_page
-  $(window).on('load hashchange', function(){
-    
-    // First hide all content regions
+$(document).ready(function () {
+  // Show the Home section on page load
+  $('#home').show();
+
+  // Click event for navigation links
+  $('.main-menu a').on('click', function (e) {
+    e.preventDefault();
+    var target = $(this).attr('href');
+
+    // Hide all content regions
     $('.content-region').hide();
-    
-    // Remove any active classes on the main-menu
+
+    // Show the clicked content region
+    $(target).show();
+
+    // Remove and add 'active' class for navigation links
     $('.main-menu a').removeClass('active');
-    var region = location.hash.toString() || $('.main-menu a:first').attr('href');
-    
-    // Now show the region specified in the URL hash
-    $(region).show();
-    
-    // Highlight the menu link associated with this region by adding the .active CSS class
-    $('.main-menu a[href="'+ region +'"]').addClass('active'); 
+    $(this).addClass('active');
   });
-  
-})(jQuery);
+});
