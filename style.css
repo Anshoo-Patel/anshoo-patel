@@ -20,7 +20,7 @@ body {
 a {
   font-weight: normal;
   text-decoration: none; 
-  color:#EF6D3D;
+  color: #EF6D3D;
 }
 a:focus {
   outline: thin dotted;
@@ -90,7 +90,7 @@ blockquote p:last-child {
  * Layout styles
  */
 
-/* Full size background image */
+/* Full-size background image */
 html, #container, .inner { background-color:transparent;}
 html {
   background:url(background.jpg) center center no-repeat fixed;
@@ -196,6 +196,3 @@ ul.main-menu li a.active {
     });
   });
 })(jQuery);
-
-
-
