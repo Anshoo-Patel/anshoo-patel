@@ -1,21 +1,32 @@
-// Wait for the document to load before running the script 
-$(document).ready(function () {
-  // Show the Home section on page load
-  $('#home').show();
+(function ($) {
+  $(document).ready(function () {
+    // Function to show/hide content based on hash
+    function showContent() {
+      var region = location.hash.toString() || '#home';
+      $('.content-region').hide();
+      $(region).show();
+      $('.main-menu a').removeClass('active');
+      $('.main-menu a[href="' + region + '"]').addClass('active');
+    }
 
-  // Click event for navigation links
-  $('.main-menu a').on('click', function (e) {
-    e.preventDefault();
-    
-    // Get the target section from the href attribute
-    var target = $(this).attr('href');
+    // Show content on page load and hashchange
+    $(window).on('load hashchange', function () {
+      showContent();
+    });
 
-    // Remove and add 'active' class for navigation links
-    $('.main-menu a').removeClass('active');
-    $(this).addClass('active');
+    // Click event for navigation links
+    $('#content a').on('click', function (e) {
+      e.preventDefault();
+      var target = $(this).attr('href');
+      location.hash = target;
+      showContent();
+    });
 
-    // Show the targeted section and hide others
-    $('.content-region').hide();
-    $(target).show();
+    // Click event for Home button
+    $('.main-menu li:first-child a').on('click', function (e) {
+      e.preventDefault();
+      location.hash = '#home';
+      showContent();
+    });
   });
-});
+})(jQuery);
