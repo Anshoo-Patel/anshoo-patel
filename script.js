@@ -8,12 +8,6 @@ $(document).ready(function () {
     e.preventDefault();
     var target = $(this).attr('href');
 
-    // Hide all content regions
-    $('.content-region').hide();
-
-    // Show the clicked content region
-    $(target).show();
-
     // Remove and add 'active' class for navigation links
     $('.main-menu a').removeClass('active');
     $(this).addClass('active');
