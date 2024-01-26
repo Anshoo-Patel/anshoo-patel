@@ -11,5 +11,9 @@ $(document).ready(function () {
     // Remove and add 'active' class for navigation links
     $('.main-menu a').removeClass('active');
     $(this).addClass('active');
+
+    // Show the targeted section
+    $('.content-region').hide();
+    $(target).show();
   });
 });
